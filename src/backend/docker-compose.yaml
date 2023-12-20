@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: toor
+      
+  fastapi-app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    links:
+      - mongodb        
+volumes:
+  mongodb_data:
