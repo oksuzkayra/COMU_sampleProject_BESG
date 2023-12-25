@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arama Motoru</title>
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        #app {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Siber Güvenlik Arama Motoru</h1>
+
+    <!-- Arama kutusu -->
+    <input type="text" v-model="searchQuery" @input="search" placeholder="Ara...">
+
+    <!-- Sonuçlar -->
+    <ul>
+        <li v-for="result in searchResults" :key="result.id">{{ result.name }}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            searchQuery: '', // Arama sorgusu
+            searchResults: [] // Arama sonuçları
+        },
+        methods: {
+            // Arama işlemi
+            search: function () {
+                // Bu kısımda gerçek bir arama işlemi yapılabilir, örneğin bir API'ye istek gönderilebilir.
+                // Ancak bu örnek sadece basit bir şekilde işleyişi göstermektedir.
+                this.searchResults = [
+                    { id: 1, name: 'Örnek Sonuç 1' },
+                    { id: 2, name: 'Örnek Sonuç 2' },
+                    { id: 3, name: 'Örnek Sonuç 3' }
+                ];
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
