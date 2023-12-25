@@ -20,6 +20,14 @@ services:
     depends_on:
       - mongodb
     links:
-      - mongodb        
+      - mongodb  
+  vue-app:
+    build:
+      context: ../frontend/search_engine_app
+      dockerfile: Dockerfile
+    environment:
+      - API_BASE_URL="http://backend:8080/search/"
+    ports:
+      - "8088:80"      
 volumes:
   mongodb_data:
