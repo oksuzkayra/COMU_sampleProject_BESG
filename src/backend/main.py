@@ -18,6 +18,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+db.datas.createIndex({
+    'Payload Data': 'text',
+    'Attack Type': 'text',
+  },
+  {
+    default_language: 'english',
+    weights: {
+      'Payload Data': 2,
+      'Attack Type': 1
+    },
+    name: 'custom_text_index',
+    background: true,
+    analyzer: 'lucene.whitespace',
+    search_analyzer: 'lucene.standard'
+  })
+
+
+
 @app.get("/search/{search_text}")
 def read_root(search_text):
     
