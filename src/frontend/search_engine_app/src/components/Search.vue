@@ -14,8 +14,16 @@
 
             <ul v-if="searchResults.length">
                 <li v-for="(result, index) in searchResults" :key="index">
-                    <h3>{{ result['Attack Type'] }}</h3>
-                    <br>{{ result['Payload Data'] }}<br><br><hr>              
+                    <h3><b>Attack Type: </b>{{ result['Attack Type'] }}</h3>
+                    <br><b>Timestamp: </b>{{ result['Timestamp'] }}
+                    <br><b>Data: </b>{{ result['Payload Data'] }}
+                    <br><b>Severity Level: </b>{{ result['Severity Level'] }}
+                    <br><b>User Info: </b>{{ result['User Information'] }}
+                    <br><b>Proxy Info: </b>{{ result['Proxy Information'] }}
+                    <br><b>Device Info: </b>{{ result['Device Information'] }}
+                    <br><b>Location: </b>{{ result['Geo-location Data'] }}
+                    <br><b>IP & Port: </b>{{ result['Destination IP Address'] }}:{{ result['Destination Port'] }}<br><hr>              
+              
                 </li>
             </ul>
         </div>

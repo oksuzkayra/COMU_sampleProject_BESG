@@ -8,6 +8,27 @@ client = MongoClient("mongodb://root:toor@mongodb:27017")
 db = client["search_db"]
 collection = db["datas"]
 
+"""
+db.datas.createIndex({
+    'Payload Data': 'text',
+    'Attack Type': 'text',
+    'Device Information': 'text',
+    'Geo-location Data': 'text'
+  },
+  {
+    default_language: 'turkish',
+    weights: {
+      'Payload Data': 2,
+      'Attack Type': 3,
+      'Device Information': 1,
+      'Geo-location Data': 3
+    },
+    name: 'custom_text_index',
+    background: true,
+    analyzer: 'lucene.whitespace',
+    search_analyzer: 'lucene.standard'
+  })
+"""
 app = FastAPI()
 
 app.add_middleware(
@@ -17,24 +38,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-db.datas.createIndex({
-    'Payload Data': 'text',
-    'Attack Type': 'text',
-  },
-  {
-    default_language: 'english',
-    weights: {
-      'Payload Data': 2,
-      'Attack Type': 1
-    },
-    name: 'custom_text_index',
-    background: true,
-    analyzer: 'lucene.whitespace',
-    search_analyzer: 'lucene.standard'
-  })
-
-
 
 @app.get("/search/{search_text}")
 def read_root(search_text):
