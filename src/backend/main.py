@@ -8,6 +8,7 @@ client = MongoClient("mongodb://root:toor@mongodb:27017")
 db = client["search_db"]
 collection = db["datas"]
 
+
 """
 db.datas.createIndex({
     'Payload Data': 'text',
@@ -16,7 +17,7 @@ db.datas.createIndex({
     'Geo-location Data': 'text'
   },
   {
-    default_language: 'turkish',
+    default_language: 'english',
     weights: {
       'Payload Data': 2,
       'Attack Type': 3,
